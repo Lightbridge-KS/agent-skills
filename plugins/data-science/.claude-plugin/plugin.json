@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "data-science",
+  "description": "Exploratory analysis, visualization, and ML workflow helpers.",
+  "author": {
+    "name": "Kittipos S.",
+    "url": "https://github.com/Lightbridge-KS"
+  },
+  "homepage": "https://github.com/Lightbridge-KS/agent-skills",
+  "repository": "https://github.com/Lightbridge-KS/agent-skills",
+  "license": "MIT",
+  "keywords": ["eda", "visualization", "python"]
+}

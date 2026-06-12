@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
+  "name": "lightbridge-skills",
+  "owner": {
+    "name": "Kittipos S. (Lightbridge-KS)",
+    "url": "https://github.com/Lightbridge-KS"
+  },
+  "description": "Reusable Claude Code skills for radiology, coding, and data science.",
+  "plugins": [
+    {
+      "name": "coding",
+      "displayName": "Coding",
+      "source": "./plugins/coding",
+      "description": "Software engineering workflows: commits, reviews, refactoring, and language idioms.",
+      "category": "development",
+      "tags": ["python", "typescript", "git"]
+    },
+    {
+      "name": "radiology",
+      "displayName": "Radiology",
+      "source": "./plugins/radiology",
+      "description": "Medical-imaging references and workflows: DICOM, protocols, and reporting.",
+      "category": "domain-expertise",
+      "tags": ["dicom", "imaging", "medical"]
+    },
+    {
+      "name": "data-science",
+      "displayName": "Data Science",
+      "source": "./plugins/data-science",
+      "description": "Exploratory analysis, visualization, and ML workflow helpers.",
+      "category": "analytics",
+      "tags": ["eda", "visualization", "python"]
+    }
+  ]
+}

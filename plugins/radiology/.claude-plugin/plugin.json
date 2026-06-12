@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "radiology",
+  "description": "Medical-imaging references and workflows: DICOM, protocols, and reporting.",
+  "author": {
+    "name": "Kittipos S.",
+    "url": "https://github.com/Lightbridge-KS"
+  },
+  "homepage": "https://github.com/Lightbridge-KS/agent-skills",
+  "repository": "https://github.com/Lightbridge-KS/agent-skills",
+  "license": "MIT",
+  "keywords": ["dicom", "imaging", "medical"]
+}
