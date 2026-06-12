@@ -45,7 +45,7 @@ rooting each domain plugin at `plugins/<domain>/`, the skill path becomes
 ```
 plugins/coding/
   .claude-plugin/plugin.json        ← makes "coding" an installable plugin
-  skills/conventional-commit/SKILL.md
+  skills/example-skill/SKILL.md
 ```
 
 Adding a domain = a new `plugins/<domain>/.claude-plugin/plugin.json` + an entry in
@@ -71,11 +71,11 @@ operational bodies).
 ```
 CANONICAL (this repo)                          CONSUMERS
 ─────────────────────                          ─────────
-plugins/coding/skills/conventional-commit/
+plugins/coding/skills/example-skill/
         │
         ├─ plugin marketplace ───────────────► /plugin install coding@lightbridge-skills
-        ├─ symlink (uv installer, macOS/Linux) ─► ~/.claude/skills/conventional-commit  (live edits)
-        └─ copy    (uv installer, Windows)      ─► ~/.codex/skills/conventional-commit   (static snapshot)
+        ├─ symlink (uv installer, macOS/Linux) ─► ~/.claude/skills/example-skill  (live edits)
+        └─ copy    (uv installer, Windows)      ─► ~/.codex/skills/example-skill   (static snapshot)
 ```
 
 - **Plugin marketplace** — `.claude-plugin/marketplace.json` lists each domain plugin.

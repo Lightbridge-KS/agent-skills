@@ -41,7 +41,7 @@ uv run scripts/install_skills.py --codex      # ~/.codex/skills    (Codex)
 uv run scripts/install_skills.py --agents     # ~/.agents/skills   (OpenCode & others)
 uv run scripts/install_skills.py --target ~/some/dir                    # custom target
 
-uv run scripts/install_skills.py --codex coding/conventional-commit     # one skill
+uv run scripts/install_skills.py --codex coding/example-skill     # one skill
 uv run scripts/install_skills.py --codex --domain coding               # a whole domain
 ```
 
@@ -68,9 +68,10 @@ If you use Claude Code, you can install whole domains as plugins, with no clone:
 
 | Domain | Skill | What it does |
 | ------ | ----- | ------------ |
-| `coding` | _(none yet)_ | Skills coming soon. |
-
-No skills are published yet. See **Add a skill** below.
+| `coding` | `commit-push-pr` | Commit, push, and create/update a draft PR in one guided flow. |
+| `coding` | `c4-architect` | Turn requirements into Simon Brown's C4 (C1–C3) architecture diagrams. |
+| `coding` | `explain-system-architecture` | Reverse-engineer an existing codebase into one architecture doc with Mermaid diagrams. |
+| `coding` | `explain-ux-design` | Document a codebase's user-facing surface (API/UX) — the system from outside the boundary. |
 
 ## Add a skill
 

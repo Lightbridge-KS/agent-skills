@@ -11,7 +11,7 @@ directory the agent reads from (skills land flat, keyed by skill name).
 
     uv run scripts/install_skills.py --list                       # available skills
     uv run scripts/install_skills.py --claude                     # all into ~/.claude/skills
-    uv run scripts/install_skills.py --claude coding/conventional-commit  # one skill
+    uv run scripts/install_skills.py --claude coding/example-skill  # one skill
     uv run scripts/install_skills.py --claude --domain coding     # a whole plugin/domain
     uv run scripts/install_skills.py --claude --dry-run           # preview, no writes
 
@@ -103,7 +103,9 @@ def resolve_selection(
             if not matches:
                 errors.append(f"unknown skill: {token}")
             elif len(matches) > 1:
-                errors.append(f"ambiguous skill '{token}': use one of {', '.join(matches)}")
+                errors.append(
+                    f"ambiguous skill '{token}': use one of {', '.join(matches)}"
+                )
             else:
                 selected.append(matches[0])
 
@@ -122,7 +124,9 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
         help="Skills to install as <domain>/<skill> or bare <skill> (default: all).",
     )
     parser.add_argument("--domain", help="Install every skill in this plugin/domain.")
-    parser.add_argument("--target", help="Install target directory. Default: ~/.claude/skills")
+    parser.add_argument(
+        "--target", help="Install target directory. Default: ~/.claude/skills"
+    )
     parser.add_argument("--claude", action="store_true", help="Target ~/.claude/skills")
     parser.add_argument("--codex", action="store_true", help="Target ~/.codex/skills")
     parser.add_argument("--agents", action="store_true", help="Target ~/.agents/skills")
@@ -132,16 +136,24 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
         default="auto",
         help="auto (default): symlink on macOS/Linux, copy on Windows.",
     )
-    parser.add_argument("--dry-run", action="store_true", help="Print actions without changing files.")
-    parser.add_argument("--force", action="store_true", help="Replace an existing skill at the target.")
-    parser.add_argument("--list", action="store_true", help="List available skills and exit.")
+    parser.add_argument(
+        "--dry-run", action="store_true", help="Print actions without changing files."
+    )
+    parser.add_argument(
+        "--force", action="store_true", help="Replace an existing skill at the target."
+    )
+    parser.add_argument(
+        "--list", action="store_true", help="List available skills and exit."
+    )
     return parser.parse_args(argv)
 
 
 def resolve_target(args: argparse.Namespace) -> Path:
     chosen = [name for name in ("claude", "codex", "agents") if getattr(args, name)]
     if args.target and chosen:
-        sys.exit("error: pass either --target or a shortcut (--claude/--codex/--agents), not both")
+        sys.exit(
+            "error: pass either --target or a shortcut (--claude/--codex/--agents), not both"
+        )
     if len(chosen) > 1:
         sys.exit("error: choose only one of --claude/--codex/--agents")
     if args.target:
@@ -151,7 +163,9 @@ def resolve_target(args: argparse.Namespace) -> Path:
     return DEFAULT_TARGET
 
 
-def install_one(source: Path, target_dir: Path, mode: str, *, force: bool, dry_run: bool) -> None:
+def install_one(
+    source: Path, target_dir: Path, mode: str, *, force: bool, dry_run: bool
+) -> None:
     name = source.name
     target = target_dir / name
 
@@ -208,7 +222,9 @@ def main(argv: list[str]) -> int:
         target_dir.mkdir(parents=True, exist_ok=True)
 
     for key in selected:
-        install_one(available[key], target_dir, mode, force=args.force, dry_run=args.dry_run)
+        install_one(
+            available[key], target_dir, mode, force=args.force, dry_run=args.dry_run
+        )
 
     return 0
 
