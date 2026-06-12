@@ -4,8 +4,8 @@ This repo solves one problem: agent workflows (CLI usage, references, review che
 …) get hand-copied between projects and drift. The fix is a single canonical repository
 plus cheap distribution into each agent's skills directory.
 
-The design is adapted from a private RAMAAI team repo (itself adapted from the OpenClaw
-`agent-skills` layout), with three changes for a **public, personal** collection:
+The design is adapted from the OpenClaw
+`agent-skills` layout, with three changes for a **public, personal** collection:
 
 1. **Dual distribution** — a Claude Code **plugin marketplace** *and* a `uv` installer,
    both reading the same files (see "Distribution model").
