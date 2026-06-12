@@ -5,7 +5,7 @@
     "name": "Kittipos S. (Lightbridge-KS)",
     "url": "https://github.com/Lightbridge-KS"
   },
-  "description": "Reusable skills for AI coding agents.",
+  "description": "Reusable skills for AI coding agents — software engineering and radiology/medical-imaging.",
   "plugins": [
     {
       "name": "coding",
@@ -14,6 +14,14 @@
       "description": "Software engineering workflows: commits, reviews, refactoring, and language idioms.",
       "category": "development",
       "tags": ["python", "typescript", "git"]
+    },
+    {
+      "name": "radiology",
+      "displayName": "Radiology",
+      "source": "./plugins/radiology",
+      "description": "Medical-imaging tooling references: DICOM via DCMTK, the Orthanc REST API, and 3D Slicer.",
+      "category": "domain-expertise",
+      "tags": ["dicom", "dcmtk", "orthanc", "slicer"]
     }
   ]
 }

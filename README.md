@@ -60,6 +60,7 @@ If you use Claude Code, you can install whole domains as plugins, with no clone:
 ```text
 /plugin marketplace add Lightbridge-KS/agent-skills
 /plugin install coding@lightbridge-skills
+/plugin install radiology@lightbridge-skills
 ```
 
 `/plugin marketplace update lightbridge-skills` refreshes the catalog later.
@@ -72,6 +73,9 @@ If you use Claude Code, you can install whole domains as plugins, with no clone:
 | `coding` | `c4-architect` | Turn requirements into Simon Brown's C4 (C1–C3) architecture diagrams. |
 | `coding` | `explain-system-architecture` | Reverse-engineer an existing codebase into one architecture doc with Mermaid diagrams. |
 | `coding` | `explain-ux-design` | Document a codebase's user-facing surface (API/UX) — the system from outside the boundary. |
+| `radiology` | `dcmtk` | Reference for the DCMTK DICOM command-line tools (convert, dump, anonymize, DIMSE services). |
+| `radiology` | `orthanc-api` | Drive an Orthanc DICOM server via its REST API (query/retrieve, anonymize, jobs). |
+| `radiology` | `slicer-cli` | Drive 3D Slicer over HTTP — load/view DICOM, render slices and 3D views. Wraps the [`slicer-cli`](https://github.com/Lightbridge-KS/slicer-cli) tool. |
 
 ## Add a skill
 
