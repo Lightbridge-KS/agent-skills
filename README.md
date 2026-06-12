@@ -1,27 +1,19 @@
 # Agent Skills
 
-Reusable [Claude Code](https://docs.claude.com/en/docs/claude-code) **skills** for coding
-agents, grouped by domain — **radiology**, **coding**, and **data science**. Written once,
-shared everywhere.
+Reusable **skills** for AI coding agents — [Claude Code](https://docs.claude.com/en/docs/claude-code),
+[Codex](https://developers.openai.com/codex/), [OpenCode](https://opencode.ai/), and any other
+agent that reads skills from a directory — grouped by domain. Written once, shared everywhere.
 
-Each domain is a self-contained Claude Code **plugin** you can install on its own. The same
-files also install into any agent's `skills/` directory through a small cross-platform
-script — so you can use them with or without the plugin system.
+A skill is a plain `SKILL.md` (plus optional helper files), so it works with any
+skill-aware agent. The two install paths below project the same source files into whichever
+agent you use.
 
 ## Install
 
-### Option A — Claude Code plugin marketplace (recommended)
+### Option A — `uv` installer (any agent)
 
-```text
-/plugin marketplace add Lightbridge-KS/agent-skills
-/plugin install coding@lightbridge-skills
-/plugin install radiology@lightbridge-skills
-/plugin install data-science@lightbridge-skills
-```
-
-`/plugin marketplace update lightbridge-skills` refreshes the catalog later.
-
-### Option B — `uv` installer (any agent, symlink or copy)
+The portable path: installs skills into any agent's `skills/` directory by **symlink** (live
+edits) or **copy** (static snapshot). Works with Claude Code, Codex, OpenCode, and friends.
 
 Requires [`uv`](https://docs.astral.sh/uv/) (one cross-platform install):
 
@@ -41,13 +33,16 @@ uv run scripts/install_skills.py --claude --dry-run   # preview, no writes
 uv run scripts/install_skills.py --claude             # install all into ~/.claude/skills
 ```
 
-Install a single skill or a whole domain, into any agent's directory:
+Pick the agent (or any directory), and install a single skill or a whole domain:
 
 ```sh
-uv run scripts/install_skills.py --claude coding/conventional-commit   # one skill
-uv run scripts/install_skills.py --claude --domain coding             # all of a domain
-uv run scripts/install_skills.py --codex                              # ~/.codex/skills
-uv run scripts/install_skills.py --target ~/some/dir                  # custom target
+uv run scripts/install_skills.py --claude     # ~/.claude/skills   (Claude Code)
+uv run scripts/install_skills.py --codex      # ~/.codex/skills    (Codex)
+uv run scripts/install_skills.py --agents     # ~/.agents/skills   (OpenCode & others)
+uv run scripts/install_skills.py --target ~/some/dir                    # custom target
+
+uv run scripts/install_skills.py --codex coding/conventional-commit     # one skill
+uv run scripts/install_skills.py --codex --domain coding               # a whole domain
 ```
 
 `--mode` defaults to `auto`: **symlink** on macOS/Linux (edits in this checkout are live),
@@ -55,15 +50,27 @@ uv run scripts/install_skills.py --target ~/some/dir                  # custom t
 `--mode symlink|copy`. `--force` replaces an already-installed skill (guarded so it can
 never delete the source).
 
+> Check your agent's docs for the directory it reads skills from, then point `--target` at
+> it if it isn't one of the shortcuts above.
+
+### Option B — Claude Code plugin marketplace (Claude Code only)
+
+If you use Claude Code, you can install whole domains as plugins, with no clone:
+
+```text
+/plugin marketplace add Lightbridge-KS/agent-skills
+/plugin install coding@lightbridge-skills
+```
+
+`/plugin marketplace update lightbridge-skills` refreshes the catalog later.
+
 ## Skills
 
-| Plugin / domain | Skill | What it does |
-| --------------- | ----- | ------------ |
-| `coding` | `conventional-commit` | Write well-formed Conventional Commits messages. |
-| `radiology` | `dicom-tag-reference` | Look up common DICOM tags and their meaning. *(starter)* |
-| `data-science` | `chart-chooser` | Pick the right chart type for a dataset and question. *(starter)* |
+| Domain | Skill | What it does |
+| ------ | ----- | ------------ |
+| `coding` | _(none yet)_ | Skills coming soon. |
 
-Skills marked *(starter)* are minimal seeds — replace or expand them.
+No skills are published yet. See **Add a skill** below.
 
 ## Add a skill
 
