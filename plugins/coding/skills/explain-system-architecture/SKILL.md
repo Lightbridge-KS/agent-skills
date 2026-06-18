@@ -5,7 +5,7 @@ description: >-
   codebase. Use this skill only when the user explicitly invokes it by name
   (`explain-system-architecture`) or near-match mentioning.
 metadata:
-  version: "2026-06-12"
+  version: "2026-06-18"
 ---
 
 # Explain System Architecture
@@ -93,9 +93,11 @@ silently — if it does not apply, write one line saying why.
 **Filename:** `_docs/<system_name>_system_oop_architecture.md`, where `<system_name>` is
 the repo or project name in snake_case. Create the `_docs/` directory if it does not exist.
 
-**Cross-link:** check `_docs/` for a sibling `*_ux_design.md` (from `explain-ux-design`). If
-found, add a "See also" line under the title pointing to it, so the two docs form a paired
-inside/outside view. If absent, the doc stands alone.
+**Cross-link:** check `_docs/` for sibling docs and add a "See also" line under the title for
+each found, so the set forms a triangulated view of one system:
+- `*_ux_design.md` (from `explain-ux-dx-design`) — the outside.
+- `*_data_architecture.md` (from `explain-data-architecture`) — the data.
+If neither is present, the doc stands alone.
 
 Use this skeleton. Keep prose tight; let the diagrams carry the structure.
 
@@ -103,7 +105,7 @@ Use this skeleton. Keep prose tight; let the diagrams carry the structure.
 # <Project> — System & OOP Architecture
 
 > Source: <repo origin/URL if known> · Analyzed: <date> · Type: <App | Library | Hybrid>
-> See also: [User-Facing API & UX](./<system_name>_ux_design.md)  <!-- omit if absent -->
+> See also: [User-Facing API & UX/DX](./<system_name>_ux_design.md) · [Data Architecture](./<system_name>_data_architecture.md)  <!-- omit lines for docs not present -->
 
 ## 1. Overview
 - One-paragraph purpose: what this project is and what problem it solves.
@@ -192,7 +194,7 @@ diagrams.
 - [ ] Repo type stated with evidence.
 - [ ] Every class/module/path named in the doc exists in the repo.
 - [ ] Section emphasis matches the repo type (Step 3).
-- [ ] Sibling UX doc cross-linked if present in `_docs/`.
+- [ ] Sibling UX/DX and data docs cross-linked if present in `_docs/`.
 - [ ] All diagrams are valid Mermaid in fenced blocks and render mentally.
 - [ ] Uncertainties live in "Open Questions", not disguised as facts.
 - [ ] Exactly one Markdown file, written to `_docs/`.

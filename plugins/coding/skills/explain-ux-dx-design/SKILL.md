@@ -1,15 +1,15 @@
 ---
-name: explain-ux-design
+name: explain-ux-dx-design
 description: >-
-  Reverse-engineer and document the user-facing API and UX of an existing or
-  cloned codebase — the system as seen from outside the boundary. Use this skill
-  only when the user explicitly invokes it by name (`explain-ux-design`) or
-  near-match mentioning.
+  Reverse-engineer and document the user-facing API and UX/DX of an existing or
+  cloned codebase — the system as seen from outside the boundary, whether the
+  "user" is an end user or a developer. Use this skill only when the user
+  explicitly invokes it by name (`explain-ux-dx-design`) or near-match mentioning.
 metadata:
-  version: "2026-06-12"
+  version: "2026-06-18"
 ---
 
-# Explain UX Design
+# Explain UX & DX Design
 
 Produce one document that explains the **user-facing surface** of an **existing** codebase by
 reading its real source — not by guessing. Where `explain-system-architecture` looks *inside*
@@ -117,9 +117,11 @@ silently — if it does not apply, write one line saying why.
 **Filename:** `_docs/<system_name>_ux_design.md`, where `<system_name>` is the repo or project
 name in snake_case. Create the `_docs/` directory if it does not exist.
 
-**Cross-link:** check `_docs/` for a sibling `*_system_oop_architecture.md` (from
-`explain-system-architecture`). If found, add a "See also" line under the title pointing to it,
-so the two docs form a paired outside/inside view. If absent, the doc stands alone.
+**Cross-link:** check `_docs/` for sibling docs and add a "See also" line under the title for
+each found, so the set forms a triangulated view of one system:
+- `*_system_oop_architecture.md` (from `explain-system-architecture`) — the inside.
+- `*_data_architecture.md` (from `explain-data-architecture`) — the data.
+If neither is present, the doc stands alone.
 
 **Cheat sheet:** open the doc with a `## Cheat Sheet` preamble (unnumbered, between the "See also"
 line and `## 1. Overview`) — a one-screen TL;DR of the 5–10 most-used touchpoints that a reader
@@ -135,10 +137,10 @@ it stays a quick reference and not a second inventory.
 Use this skeleton. Keep prose tight; let the diagrams and tables carry the structure.
 
 ```markdown
-# <Project> — User-Facing API & UX
+# <Project> — User-Facing API & UX/DX
 
 > Source: <repo origin/URL if known> · Analyzed: <date> · Surface: <GUI | CLI | Library | Web API | Hybrid>
-> See also: [System & OOP Architecture](./<system_name>_system_oop_architecture.md)  <!-- omit if absent -->
+> See also: [System & OOP Architecture](./<system_name>_system_oop_architecture.md) · [Data Architecture](./<system_name>_data_architecture.md)  <!-- omit lines for docs not present -->
 
 ## Cheat Sheet
 <!-- One-screen TL;DR: the 5–10 most-used touchpoints, copy-paste-runnable, ordered by frequency.
@@ -228,7 +230,7 @@ diagrams.
 - [ ] Every route/command/symbol/endpoint named in the doc exists in the repo.
 - [ ] The doc describes the surface as the user sees it, not the internals behind it.
 - [ ] Section emphasis matches the surface type (Step 3).
-- [ ] Sibling architecture doc cross-linked if present in `_docs/`.
+- [ ] Sibling architecture and data docs cross-linked if present in `_docs/`.
 - [ ] All diagrams are valid Mermaid in fenced blocks and render mentally.
 - [ ] Uncertainties live in "Open Questions", not disguised as facts.
 - [ ] Exactly one Markdown file, written to `_docs/`.
