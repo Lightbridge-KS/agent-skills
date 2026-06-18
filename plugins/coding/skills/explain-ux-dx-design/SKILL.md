@@ -68,6 +68,14 @@ a public REST API). Cover each surface and label sections clearly.
 State the classification and the evidence for it early in the doc. If hybrid, cover each
 surface and label sections clearly.
 
+**When the user is (or could be) an AI agent.** For CLI, Web API, SDK, or MCP surfaces, a likely
+consumer is an autonomous agent, not only a human. If so, add one short note to §6 (IA / API
+Ergonomics) on its *agent experience* ("AX") — does the surface read like it was built for a
+forgetful, text-only reasoner with a finite context window? A few quick signals: self-documenting
+spec/`--help`, token-economical output (no raw-JSON dumps), errors that teach rather than just
+fail, and stable exit/status codes to branch on. Keep it descriptive here; for a full evaluative
+audit with prioritized fixes, defer to the sibling `ax-interface-analysis` skill.
+
 ## Step 2 — Explore systematically (don't read everything)
 
 Read in this order; stop drilling once you understand the boundary of a surface.
